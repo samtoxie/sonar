@@ -140,8 +140,12 @@ Enable it in `~/.config/xdg-desktop-portal/portals.conf` (create the file if it 
 
 ```ini
 [preferred]
-org.freedesktop.impl.portal.FileChooser=sonar
+org.freedesktop.impl.portal.FileChooser=org.freedesktop.impl.portal.desktop.sonar
 ```
+
+(The value is the backend's name, which is the `.portal` file name minus the extension —
+`org.freedesktop.impl.portal.desktop.sonar.portal`. Don't shorten it to `sonar`: an unknown backend
+name makes the portal quietly fall back to the desktop default, or offer no chooser at all.)
 
 then restart the portal service and the apps:
 
