@@ -50,6 +50,8 @@ pub struct PickerRequest {
     pub name: Option<String>,
 }
 
+// Fields are read by the Linux portal glue only.
+#[cfg_attr(not(target_os = "linux"), allow(dead_code))]
 #[derive(Debug, Default, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PickerAnswer {
