@@ -19,7 +19,9 @@ Not there yet: Dolphin's F4 terminal panel and a quick preview (Space). See the
 
 ## Install
 
-**Arch Linux:** from the AUR, with an AUR helper such as [paru](https://github.com/Morganamilo/paru):
+### Arch Linux
+
+From the AUR, with an AUR helper such as [paru](https://github.com/Morganamilo/paru):
 
 ```sh
 paru -S sonar-bin   # the release build, ready to run
@@ -29,7 +31,35 @@ paru -S sonar-git   # or: built from the latest development version
 
 Install `udisks2` too if you want to mount drives from the sidebar.
 
-**Other Linux / macOS:** download the latest build from [Releases](https://github.com/samtoxie/sonar/releases):
+### Nix
+
+Run directly without installing:
+
+```bash
+nix run "github:samtoxie/sonar?dir=packaging/nix"
+```
+
+Install into your profile:
+
+```bash
+nix profile install "github:samtoxie/sonar?dir=packaging/nix"
+```
+
+Or add it to your NixOS / Home Manager `flake.nix` inputs:
+
+```nix
+{
+  inputs = {
+    sonar.url = "github:samtoxie/sonar?dir=packaging/nix";
+  };
+
+  # Then reference packages.\${pkgs.system}.default in your packages list
+}
+```
+
+### Other Linux / macOS
+
+Download the latest build from [Releases](https://github.com/samtoxie/sonar/releases):
 
 - **Linux:** the AppImage (or the `.deb` / `.rpm`). Sonar uses a few standard tools at runtime
   (`shared-mime-info`, `xdg-utils`, `udisks2`, `libarchive` and an icon theme such as `breeze-icons`; all
