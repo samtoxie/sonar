@@ -2,7 +2,7 @@
 
 A file manager inspired by KDE Dolphin, built with Tauri 2 and Rust. Targets macOS and Arch Linux.
 
-**Status: 0.1.0, early but usable for daily work.** Browsing, live updates, opening files, and file operations
+**Status: 0.1.1, early but usable for daily work.** Browsing, live updates, opening files, and file operations
 (rename, new folder, trash, delete, copy/cut/paste with progress and conflict handling, undo), drag and drop
 (within Sonar and with other apps), the system clipboard, tabs, split view and rubber-band selection, OS file
 types and icons, image thumbnails, disk usage and mount/eject in the sidebar, a native menu bar on macOS,
@@ -66,8 +66,8 @@ Download the latest build from [Releases](https://github.com/samtoxie/sonar/rele
   present on a usual KDE or GNOME install). If one is missing, the feature that needs it says which package to
   install. The `.deb`, `.rpm` and AUR packages also register Sonar as a file chooser backend for the
   XDG Desktop Portal — see [below](#using-sonar-as-the-file-chooser-linux).
-- **macOS (Apple Silicon):** the `.dmg`. The build isn't signed: after copying Sonar to Applications, open it
-  once and allow it under System Settings → Privacy & Security.
+- **macOS (Apple Silicon):** the `.dmg`. The build isn't notarized: after copying Sonar to Applications, open it
+  once, then choose Open Anyway under System Settings → Privacy & Security.
 
 To make Sonar the default file manager, see [below](#making-sonar-your-default-file-manager).
 

@@ -5,9 +5,10 @@ name: Build
 # - Tags like v0.1.0: a draft GitHub Release with the installers attached.
 #   Publish it from the Releases page after a quick check.
 #
-# macOS builds are not signed/notarized (no Apple Developer certificate yet):
-# on first launch, allow Sonar in System Settings → Privacy & Security, or run
-# `xattr -d com.apple.quarantine /Applications/Sonar.app`.
+# macOS builds are ad-hoc signed but not notarized (no Apple Developer certificate yet):
+# on first launch, choose Open Anyway in System Settings → Privacy & Security, or run
+# `xattr -d com.apple.quarantine /Applications/Sonar.app`. The ad-hoc signature
+# (bundle.macOS.signingIdentity "-") is required: without it Gatekeeper calls the app "damaged".
 
 on:
   push:
@@ -74,7 +75,7 @@ jobs:
           tagName: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || '' }}
           releaseName: Sonar ${{ github.ref_name }}
           releaseBody: |
-            Unsigned builds. macOS: on first launch allow Sonar in System Settings → Privacy & Security.
+            Not notarized. macOS: on first launch, choose Open Anyway in System Settings → Privacy & Security.
             Linux: the AppImage runs on most distributions (including Arch); .deb and .rpm are also attached.
           releaseDraft: true
           prerelease: false
